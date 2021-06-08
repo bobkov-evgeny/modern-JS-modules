@@ -28,23 +28,31 @@
 // ShoppingCart2.addToCart('apple', 4);
 
 import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import { cart, addToCart } from './shoppingCart.js';
 
-const state = {
-  cart: [
-    { product: 'bread', quantity: 5 },
-    { product: 'pizza', quantity: 2 },
-  ],
-  user: { loggedIn: true },
-};
-
-const stateClone = Object.assign({}, state);
-const stateDeepClone = cloneDeep(state);
-
-state.user.loggedIn = false;
-console.log(stateClone);
-
-console.log(stateDeepClone);
+addToCart('Pizza', 3);
+addToCart('Coca-Cola', 10);
+addToCart('IceCream', 1);
 
 if (module.hot) {
   module.hot.accept();
 }
+
+class Person {
+  greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+const jonas = new Person('Jonas');
+
+console.log('jonas' ?? null);
+
+console.log(cart.filter(el => el.quantity >= 2));
+
+//import 'core-js/stable';
+import 'core-js/stable/array/find';
+
+// polifilling async functions
+import 'regenerator-runtime/runtime';
